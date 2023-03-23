@@ -17,8 +17,12 @@ class CounterView(activity: MainActivity) : ActivityView(activity), CounterContr
         binding.counterValue.text = count
     }
 
-    override fun setInputValue() : String {
+    override fun setInputValue() : String{
         return binding.inputValue.text.toString()
+    }
+
+    override fun onInputValueEntered( onChange: () -> Unit ){
+        binding.inputValue.addTextChangedListener{ onChange() }
     }
 
     override fun onIncreaseButtonPressed(onClick: () -> Unit) {
@@ -32,5 +36,4 @@ class CounterView(activity: MainActivity) : ActivityView(activity), CounterContr
     override fun onResetButtonPressed(onClick: () -> Unit) {
         binding.resetButton.setOnClickListener{ onClick() }
     }
-
 }

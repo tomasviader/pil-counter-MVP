@@ -4,22 +4,23 @@ import com.example.pil_mobile_basics.mvp.contract.CounterContract
 
 class CounterModel : CounterContract.Model {
 
-
     private var count = 0
 
     override fun getCount(): String = count.toString()
 
-
-    override fun increase(value : Int) {
-        count = value + 1
+    override fun setInitialValue(inputValue : Int) {
+        count = inputValue
     }
 
-    override fun decrease(value : Int) {
-        count = value - 1
+    override fun increase(inputValue : Int) {
+        count += inputValue
+    }
+
+    override fun decrease(inputValue : Int) {
+        count -= inputValue
     }
 
     override fun reset() {
         count = 0
     }
-
 }

@@ -8,7 +8,12 @@ class CounterPresenter(private val model: CounterContract.Model, private val vie
         view.onIncreaseButtonPressed { onIncreaseButtonPressed() }
         view.onDecreaseButtonPressed { onDecreaseButtonPressed() }
         view.onResetButtonPressed { onResetButtonPressed() }
+        view.onInputValueEntered { onInputValueEntered() }
+    }
 
+    override fun onInputValueEntered() {
+        model.setInitialValue(view.setInputValue().toInt())
+        view.setCount(model.getCount())
     }
 
     override fun onIncreaseButtonPressed() {
@@ -25,5 +30,4 @@ class CounterPresenter(private val model: CounterContract.Model, private val vie
         model.reset()
         view.setCount(model.getCount())
     }
-
 }
