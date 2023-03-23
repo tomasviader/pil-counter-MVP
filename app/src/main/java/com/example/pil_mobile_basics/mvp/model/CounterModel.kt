@@ -11,11 +11,11 @@ class CounterModel : CounterContract.Model {
 
 
     override fun increase(value : Int) {
-        count = (count + value) + 1
+        count = value + 1
     }
 
     override fun decrease(value : Int) {
-        count -= value
+        count = value - 1
     }
 
     override fun reset() {
