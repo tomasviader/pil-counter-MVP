@@ -1,10 +1,11 @@
 package com.example.pil_mobile_basics.mvp.model
 
 import com.example.pil_mobile_basics.mvp.contract.CounterContract
+import com.example.pil_mobile_basics.util.Constants.Constants.INITIAL_VALUE
 
 class CounterModel : CounterContract.Model {
 
-    private var count = 0
+    private var count = INITIAL_VALUE
 
     override fun getCount(): String = count.toString()
 
@@ -21,6 +22,6 @@ class CounterModel : CounterContract.Model {
     }
 
     override fun reset() {
-        count = 0
+        count = INITIAL_VALUE
     }
 }
