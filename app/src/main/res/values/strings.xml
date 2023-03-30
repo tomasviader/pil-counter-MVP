@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">pil-mobile-basics</string>
+    <string name="app_title">PIL Counter App</string>
+    <string name="counter_initial_value">0</string>
+    <string name="increase_button_text">Increase</string>
+    <string name="decrease_button_text">Decrease</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="input_hint">Enter number</string>
 </resources>

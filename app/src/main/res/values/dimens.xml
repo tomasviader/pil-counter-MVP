@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="title_text">35sp</dimen>
+    <dimen name="margin_title">40dp</dimen>
+    <dimen name="margin_top_input">100dp</dimen>
+    <dimen name="input_text">25sp</dimen>
+    <dimen name="margin_top_counter">132dp</dimen>
+    <dimen name="counter_text">50sp</dimen>
+    <dimen name="margin_top_buttons">150dp</dimen>
+    <dimen name="margin_start_end_buttons">50dp</dimen>
+    <dimen name="button_text">15sp</dimen>
+    <dimen name="margin_top_reset">300dp</dimen>
+
+</resources>
