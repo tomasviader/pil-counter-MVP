@@ -21,6 +21,8 @@ class CounterPresenterTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxed = true)
+        /*verify { view.onIncreaseButtonPressed { any() } }
+        verify { view.setCount("0") }*/
         presenter = CounterPresenter(CounterModel(), view)
     }
 

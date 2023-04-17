@@ -1,6 +1,5 @@
 package com.example.pil_mobile_basics.mvp.view
 
-import android.text.Editable
 import androidx.core.widget.addTextChangedListener
 import com.example.pil_mobile_basics.activity.MainActivity
 import com.example.pil_mobile_basics.databinding.ActivityMainBinding
@@ -17,9 +16,7 @@ class CounterView(activity: MainActivity) : ActivityView(activity), CounterContr
         binding.counterValue.text = count
     }
 
-    override fun setInputValue() : String{
-        return binding.inputValue.text.toString()
-    }
+    override fun setInputValue() : String= binding.inputValue.text.toString()
 
     override fun onInputValueEntered( onChange: () -> Unit ){
         binding.inputValue.addTextChangedListener{ onChange() }
