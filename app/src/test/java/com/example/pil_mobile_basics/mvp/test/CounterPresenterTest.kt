@@ -3,7 +3,6 @@ package com.example.pil_mobile_basics.mvp.test // ktlint-disable package-name
 import com.example.pil_mobile_basics.mvp.contract.CounterContract
 import com.example.pil_mobile_basics.mvp.model.CounterModel
 import com.example.pil_mobile_basics.mvp.presenter.CounterPresenter
-import com.example.pil_mobile_basics.util.Constants.Constants.INITIAL_VALUE
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -21,52 +20,53 @@ class CounterPresenterTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxed = true)
-        /*verify { view.onIncreaseButtonPressed { any() } }
-        verify { view.setCount("0") }*/
         presenter = CounterPresenter(CounterModel(), view)
     }
 
     @Test
-    fun onInputValueEnteredTest() {
-        val number = "10"
-        every { view.setInputValue() } returns number
-        every { view.onInputValueEntered { view.setInputValue() } } returns view.setCount(number)
-        presenter.onInputValueEntered()
-        verify { view.setCount(number) }
+    fun onIncreaseButtonPressedTest() {
+        every { view.getInputValue() } returns TEN_STRING
+
+        presenter.onIncreaseButtonPressed()
+
+        verify { view.setCount(TEN_STRING) }
     }
 
     @Test
-    fun onIncreaseButtonPressedTest() {
-        val number = "25"
-        val increasedNumber = "50"
-        every { view.setInputValue() } returns number
-        every { view.onIncreaseButtonPressed { view.setInputValue() } } returns view.setCount(
-            increasedNumber,
-        )
+    fun `on increment button pressed without number test`() {
+        every { view.getInputValue() } returns EMPTY_STRING
+
         presenter.onIncreaseButtonPressed()
-        verify { view.setCount(increasedNumber) }
+
+        verify { view.setCount(ZERO_STRING) }
     }
 
     @Test
     fun onDecreaseButtonPressedTest() {
-        val number = "25"
-        val decreasedNumber = INITIAL_VALUE
-        every { view.setInputValue() } returns number
-        every { view.onDecreaseButtonPressed { view.setCount(number) } } returns view.setCount(
-            decreasedNumber.toString(),
-        )
-        presenter.onDecreaseButtonPressed()
-        verify { view.setCount(decreasedNumber.toString()) }
-    }
+        every { view.getInputValue() } returns SEVEN_STRING
 
+        presenter.onDecreaseButtonPressed()
+
+        verify { view.setCount(ZERO_STRING) }
+    }
     @Test
     fun onResetButtonPressedTest() {
-        val number = "30"
-        every { view.setInputValue() } returns number
-        every { view.onResetButtonPressed { view.setCount(number) } } returns view.setCount(
-            INITIAL_VALUE.toString(),
-        )
+        every { view.getInputValue() } returns SEVEN_STRING
+
+        presenter.onIncreaseButtonPressed()
+
+        verify { view.setCount(SEVEN_STRING) }
+
         presenter.onResetButtonPressed()
-        verify { view.setCount(INITIAL_VALUE.toString()) }
+
+        verify { view.setCount(ZERO_STRING) }
+        verify { view.clear() }
+    }
+
+    companion object {
+        private const val ZERO_STRING = "0"
+        private const val TEN_STRING = "5"
+        private const val SEVEN_STRING = "7"
+        private const val EMPTY_STRING = ""
     }
 }
